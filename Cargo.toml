@@ -11,8 +11,4 @@ homepage = "https://github.com/Sean1708/userror"
 repository = "https://github.com/Sean1708/userrror.git"
 
 [dependencies]
-ansi_term = { version = "0.7", optional = true }
-
-[features]
-default = ["colour"]
-colour = ["ansi_term"]
+ansi_term = "0.7"
