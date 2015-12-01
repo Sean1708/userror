@@ -21,9 +21,9 @@ macro_rules! flm {
 
 #[macro_export]
 macro_rules! internal {
-    ($message:expr) => (internal(flm!($message)));
+    ($message:expr) => ($crate::internal(flm!($message)));
 
-    ($format:expr, $( $val:expr ),+) => (internal(&flm!($format, $( $val ),+)));
+    ($format:expr, $( $val:expr ),+) => ($crate::internal(&flm!($format, $( $val ),+)));
 }
 
 
