@@ -21,9 +21,9 @@ macro_rules! flm {
 
 #[macro_export]
 macro_rules! internal {
-    ($message:expr) => (print(Colour::Red, "internal", flm!($message)));
+    ($message:expr) => (internal(flm!($message)));
 
-    ($format:expr, $( $val:expr ),+) => (print(Colour::Red, "internal", &flm!($format, $( $val ),+)));
+    ($format:expr, $( $val:expr ),+) => (internal(&flm!($format, $( $val ),+)));
 }
 
 
@@ -40,6 +40,10 @@ fn print(colour: Colour, level: &str, message: &str) -> io::Result<()> {
         ),
         None => writeln!(io::stderr(), "{} {}", colour.paint(level), message),
     }
+}
+
+pub fn internal(message: &str) -> io::Result<()> {
+    print(Colour::Red, "internal", message)
 }
 
 pub fn fatal(message: &str) -> ! {
