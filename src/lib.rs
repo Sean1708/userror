@@ -23,7 +23,7 @@ macro_rules! flm {
 macro_rules! internal {
     ($message:expr) => (print(Colour::Red, "internal", flm!($message)));
 
-    ($format:expr, $( $val:expr ),+) => (print(Colour::Red, "internal", &flm!($message)));
+    ($format:expr, $( $val:expr ),+) => (print(Colour::Red, "internal", &flm!($format, $( $val ),+)));
 }
 
 
