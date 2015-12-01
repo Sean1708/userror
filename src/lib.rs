@@ -20,6 +20,11 @@ macro_rules! flm {
 }
 
 #[macro_export]
+macro_rules! expect {
+    ($value:expr, $message:expr) => ($value.expect(flm!($message)));
+}
+
+#[macro_export]
 macro_rules! internal {
     ($message:expr) => ($crate::internal(flm!($message)));
 
