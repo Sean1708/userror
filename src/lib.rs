@@ -8,10 +8,37 @@
 //! [dependencies]
 //! userror = "0.1.0"
 //! ```
+//!
+//! By default userror prints coloured messages with ansi_term, if you do not want this use
+//! `default-features = false`
+//!
+//! ```toml
+//! [dependencies]
+//! userror = { version = "0.1.0", default-features = false }
+//! ```
 
+#[cfg(feature = "colour")]
 extern crate ansi_term;
 
+#[cfg(feature = "colour")]
 use ansi_term::Colour;
+
+#[cfg(not(feature = "colour"))]
+enum Colour {
+    Purple,
+    Blue,
+    Yellow,
+    Red,
+}
+
+#[cfg(not(feature = "colour"))]
+impl Colour {
+    fn paint<'l>(&self, level: &'l str) -> &'l str {
+        level
+    }
+}
+
+
 use std::io::{self, Write};
 
 /// Prepend file and line info into a given message.

@@ -5,10 +5,15 @@ authors = ["Sean Marshallsay <srm.1708@gmail.com>"]
 
 description = "User-facing error messages for command-line programs."
 readme = "README.md"
-keywords = ["cli", "error", "message", "warning"]
+keywords = ["user", "cli", "error", "message", "warning"]
 
 homepage = "https://github.com/Sean1708/userror"
 repository = "https://github.com/Sean1708/userrror.git"
 
+[features]
+default = ["colour"]
+
+colour = ["ansi_term"]
+
 [dependencies]
-ansi_term = "0.7"
+ansi_term = { version = "0.7", optional = true }
